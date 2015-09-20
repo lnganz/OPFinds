@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="options.css">
+    <title>OPFinds Options</title>
+  </head>
+  <body>
+
+  <!-- Favorite color:
+  <select id="color">
+   <option value="red">red</option>
+   <option value="green">green</option>
+   <option value="blue">blue</option>
+   <option value="yellow">yellow</option>
+  </select> -->
+  <h1>OPFinds Options</h1>
+  <p>
+    <label>
+      Good deal lower limit: 
+      <input type="number" id="goodPercentage" min="1" max="99">%
+      <img src="../assets/help_icon.png" data-placement="top" data-toggle="tooltip" title="Threshold for deals">
+    </label>
+  </p>
+  <p>
+    <label>
+        
+        <input class="cb" type="checkbox" id="sort">
+        Sort by value?
+        <img src="../assets/help_icon.png" data-placement="top" data-toggle="tooltip" title="Sort items on page to show the best deals at the top">
+      <p>
+        <input class="cb" type="checkbox" id="remove"> 
+        Remove bad deals
+        <img src="../assets/help_icon.png" data-placement="top" data-toggle="tooltip" title="Hide deals below the good deal lower limit">
+      </p>
+      <p>
+        <input class="cb" type="checkbox" id="updateTabTitle"> 
+        Update tab title
+        <img src="../assets/help_icon.png" data-placement="top" data-toggle="tooltip" title="Tab title will update with # of potential deals">
+      </p>
+    </label>
+  </p>
+  <p>
+    <label>
+    </label>
+  </p>
+  <p>
+    <label>
+      <input class="cb" type="checkbox" id="ignore">
+      Ignore following keywords (separated by commas):
+      <input type="text" id="ignoreList">
+      <img src="../assets/help_icon.png" data-placement="top" data-toggle="tooltip" title="Ignore items with these words in their names">
+    </label>
+  </p>
+  <p>
+    <label>
+      <input class="cb" type="checkbox" id="limitResults">
+      Only filter first <input type="number" id="numResults" min="1" max="999"> results
+      <img src="../assets/help_icon.png" data-placement="top" data-toggle="tooltip" title="Limit the number of search results processed. This is not necessarily how many items will appear.">
+    </label>
+  </p>
+  <p>
+    <label>
+      <input class="cb" type="checkbox" id="soundEnabled">
+      Enable sounds
+      <img src="../assets/help_icon.png" data-placement="top" data-toggle="tooltip" title="Enable sounds for new deals on deals page.">
+      <!-- <form action="demo_form.asp"> -->
+      <!-- Select a file: <input type="file" id="soundFile" name="img"> -->
+      <!-- <div id="selectedFile"></div> -->
+      <!-- <input class="btn" type="submit"> -->
+</form>
+    </label>
+  </p>
+  <!-- <p>
+      <label>
+        <input type="checkbox" id="linkSearch">
+        Enable item search link (may decrease performance)
+      </label>
+  </p> -->
+  <h3>Auto-refresh</h3>
+  <p>
+    <label>
+      Refresh every <input type="number" id="refreshRate" min="1" max="999"> minute(s)
+    </label>
+  </p>
+  <p>
+    <label>
+      Refresh tabs <input type="number" id="refreshDelay" min="1" max="999"> second(s) apart
+    </label>
+  </p>
+  <h3>Deal Borders</h3>
+  <p>
+    <label>
+      <input type="color" id="color1">
+      up to <input type="number" id="colorRange1" min="1" max="999">% 
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="color" id="color2">
+      up to <input type="number" id="colorRange2" min="1" max="999">%
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="color" id="color3">
+      up to <input type="number" id="colorRange3" min="1" max="999">%
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="color" id="color4">
+      for the best deals!
+    </label>
+  </p>
+  <p>
+    <button class="btn" id="save">Save</button>
+    <div id="status"></div>
+  </p>
+
+  <script src="../scripts/jquery-2.1.4.js"></script>
+  <script src="../scripts/options.js"></script>
+  </body>
+</html>

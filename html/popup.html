@@ -1,0 +1,35 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="options.css">
+    <center>
+      <title>OPFinds Popup</title>
+
+      <b>Refresh in:</b>
+      <p><i id="timer"> No Timer </i></p>
+      <button class="btn" id="startRefresh">Start Auto-Refresh</button>
+      <br>
+      <button class="btn" id="stopRefresh">Stop Auto-Refresh</button>
+      <br>
+      <button class="btn" id="openDealsPage">All Deals</button>
+      <br>
+      <button class="btn" id="options">Options Page</button>
+      <br>
+      <br>
+      Remove Bad Deals: <input type="checkbox" id="removeDuds">
+      <br>
+      <br>
+      <button class="btn" id="save">Save</button>
+      <div id="status"></div>
+
+      <script src="../scripts/popup.js"></script>
+    </center>
+  </head>
+  <body>
+</html>
+

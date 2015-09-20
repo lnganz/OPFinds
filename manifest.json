@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+
+    "name": "OPFinds!",
+    "description": "Highlights and sorts deals on opskins.com",
+    "version": "1.4.1",
+    "icons": { "16": "assets/icon16.png",
+                "48": "assets/icon48.png",
+                "128": "assets/icon128.png"
+    },
+    "background": { 
+        "scripts": ["scripts/background.js"],
+        "persistent": false
+    },
+    "browser_action": {
+        // "default_icon": "icon16.png",
+        "default_title": "OPFinds!",
+        "default_popup": "html/popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://opskins.com/index.php?loc=shop_search*", "https://opskins.com/?loc=shop_search*"],
+            "js": ["scripts/jquery-2.1.4.js", "scripts/myscript.js", "scripts/opendealspagescript.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "alarms",
+        "storage",
+        "notifications",
+        "http://opskins.com/*",
+        "https://opskins.com/*"
+    ],
+    "options_page": "html/options.html",
+    "web_accessible_resources": ["assets/icon_x.png", "assets/deal.mp3"]
+}

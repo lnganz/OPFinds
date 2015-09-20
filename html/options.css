@@ -1,0 +1,66 @@
+body {
+  background: url('https://opskins.com/images/shopbg.jpg') center center no-repeat fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+  border-radius: 6px;
+  /*height: 1080px;*/
+  font-family: Sans-serif;
+  font-size: 18px;
+  color: white;
+}
+
+p {
+  /*text-align: center;*/
+}
+h1, h2, h3 {
+  /*text-align: center;*/
+  text-decoration: underline;
+  color: #D5622C;
+}
+.cb {
+  vertical-align: middle;
+}
+.btn {
+  -webkit-border-radius: 10;
+  border-radius: 10px;
+  /*font-family: Arial;*/
+  color: #ffffff;
+  font-size: 15px;
+  background: #3498db;
+  padding: 8px 12px 8px 12px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width: 30px;
+    height: 30px;
+    background: gray;
+    border-radius: 5px;
+    border:2px solid #555;
+}
+
+input[type='checkbox']:checked {
+    background: #d5622c;
+}
+
+input[type="number"] {
+  border-color: white;
+  background-color: black;
+  color: white;
+  width: 60px;
+  font-size: 20px;
+}
+
+input[type="text"], textarea {
+  border-color: white;
+  background-color: black;
+  color: white;
+}
