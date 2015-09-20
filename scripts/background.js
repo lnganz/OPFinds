@@ -97,10 +97,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, messageReceived) 
       timerGoing: false
     });
     stopRefresh();
-    // for (var i = 0; i < delayedRefreshFunctions.length; i++) {
-    //   clearTimeout(delayedRefreshFunctions[i]);
-    // }
-    // chrome.alarms.clear(REFRESH_ALARM_NAME);
   } else if (message.command == "alreadyStopped") {
     // alert("Auto-Refresh Already Stopped");
     defaultNotification("Auto-Refresh Already Stopped!", "Auto-Refresh is not currenty active.");
@@ -115,11 +111,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, messageReceived) 
         stopRefresh();
       });
     });
-    // } else if (message.command == "refreshDealsPage") {
-    //   dealsTabID = sender.tab.id;
   } else if (message.command == "addItemsToDealsPage" || message.command == "otherPageLoaded") {
-    // debugLog("Tab has requested to add items");
-    // debugLog(message.deals);
     message.tabID = sender.tab.id;
     chrome.storage.sync.get({
       dealsTabID: null
@@ -163,7 +155,7 @@ chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
       chrome.alarms.get(REFRESH_ALARM_NAME, function(alarm) {
         if (alarm) {
           // alert("No remaining search pages, Auto-Refresh stopped!");
-          console.log("No remaining search pages, Auto-Refresh stopped!");
+          // console.log("No remaining search pages, Auto-Refresh stopped!");
           stopRefresh();
         }
       });
@@ -214,12 +206,9 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
           if (tabCount == 0) {
             refreshTab(tabs[i].id);
           } else {
-            // debugLog(settings["refreshDelay"]);
-            // setTimeout(refreshTab(tabs[i].id), 3000);
             delayedRefreshFunctions.push(setTimeout(refreshTab, (parseFloat(settings["refreshDelay"]) * tabCount * 1000), tabs[i].id));
           }
           tabCount++;
-          // chrome.tabs.reload(tabs[i].id);
         }
       }
     });
@@ -235,14 +224,9 @@ function isDealsPage(url) {
 }
 
 function createAlarm(settings) {
-  // if (settings["autoRefresh"]) {
   var period = parseFloat(settings["refreshRate"]);
-  // var period = .2;
   chrome.alarms.create(
     REFRESH_ALARM_NAME, {
-      // delayInMinutes: settings.refreshRate,
-      // delayInMinutes: .2
-      // periodInMinutes: settings.refreshRate
       when: Date.now(),
       periodInMinutes: period
     }
@@ -252,7 +236,6 @@ function createAlarm(settings) {
     timerStart: Date.now()
   });
   debugLog("Alarm created! Pages will refresh on a " + period.toFixed(2) + " minute interval");
-  // }
 }
 
 function refreshTab(tabID) {

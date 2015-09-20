@@ -11,7 +11,6 @@ document.getElementById('openDealsPage').addEventListener('click', function() {
 });
 
 document.getElementById('startRefresh').addEventListener('click', function() {
-  // chrome.tabs.sendMessage({startRefresh: true});
   chrome.runtime.sendMessage({
     command: "startRefresh"
   });
@@ -61,8 +60,6 @@ function openOrFocusOptionsPage() {
 
 chrome.extension.onConnect.addListener(function(port) {
   var tab = port.sender.tab;
-  // This will get called by the content script we execute in
-  // the tab as a result of the user pressing the browser action.
   port.onMessage.addListener(function(info) {
     var max_length = 1024;
     if (info.selection.length > max_length)
@@ -87,10 +84,7 @@ function save_options() {
   });
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
 function loadTime() {
-  // Use default value toggleSorted = true and ignoreDragonKing = true.
   chrome.storage.sync.get({
     timerStart: Date.now(),
     refreshRate: 3,
@@ -98,9 +92,7 @@ function loadTime() {
   }, function(items) {
     var timer = document.getElementById('timer');
     timer.innerHTML = "Loading...";
-    // clearInterval(timerReload);
     if (items.timerGoing) {
-      // timerReload = setInterval(function() {
       var d1 = Date.now();
       var d2 = items.timerStart;
       var time = (d1 - d2) / 1000;
@@ -123,8 +115,6 @@ function loadTime() {
       } else {
         timer.innerHTML = m + ":" + s;
       }
-
-      // }, 1000);
     } else {
       timer.innerHTML = "No Timer";
     }

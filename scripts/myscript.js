@@ -24,8 +24,6 @@ function loadSettings(callback) {
         removeDuds: true,
         limitResults: true,
         numResults: 100,
-        // dealCutoff: 30,
-        // linkSearch: true,
         color1: "000000",
         color2: "#FFFF00",
         color3: "#FFA500",
@@ -44,8 +42,6 @@ function loadSettings(callback) {
             "removeDuds": items.removeDuds,
             "limitResults": items.limitResults,
             "numResults": items.numResults,
-            // "dealCutoff": items.dealCutoff,
-            // "linkSearch": items.linkSearch,
             "color1": items.color1,
             "color2": items.color2,
             "color3": items.color3,
@@ -72,9 +68,6 @@ function update(settings) {
     for (var i = 0; i < keywords.length; i++) {
         keywords[i] = keywords[i].trim(); // Remove excess whitespace from keywords
     }
-    // debugLog(keywords);
-    // debugLog(settings["limitResults"]);
-    // debugLog(settings["numResults"]);
     if (settings["limitResults"]) { // If results should be limited
         var end = Math.min(settings["numResults"], itemCollection.length); // Determine final index of item array
         for (var j = end; j < itemCollection.length; j++) {
@@ -116,7 +109,6 @@ function update(settings) {
         newItem.percent = percent;
         itemBoxParent = curItem.parentNode.parentNode; // Finds the containing element of the item
 
-        // if (settings["removeDuds"] && percent > 1 - (parseFloat(settings["dealCutoff"]) / 100)) { // If deal should be removed
         if (settings["removeDuds"] && percent > goodDealPercentage) { // If deal should be removed
             itemBoxParent.removeChild(curItem.parentNode); // Remove item from page
         } else {
@@ -143,7 +135,7 @@ function update(settings) {
                 var link = "";
                 // if (settings["linkSearch"]) { // If search link needs to be created
                 // 
-                // Disabled 8/29 when opskins added search button
+                // DISABLED 8/29 when opskins added search button
                 // if (true) { // Temporarily always true
                 //     var stattrak = 0;
                 //     if (steamName.indexOf("StatTrak") >= 0) // Check if StatTrak
@@ -180,7 +172,6 @@ function update(settings) {
                 }
                 newItem.html = curItem.parentNode.outerHTML;
                 goodItems.push([percent, curItem.parentNode]);
-                // goodItemsArray.push(curItem.parentNode.outerHTML);
                 goodItemsArrayWithPercentages.push([percent, curItem.parentNode.outerHTML]);
                 if (settings["toggleSorted"]) {
                     itemBoxParent.removeChild(curItem.parentNode);
@@ -215,9 +206,7 @@ function update(settings) {
 
     chrome.runtime.sendMessage({
         command: "addItemsToDealsPage",
-        // deals: goodItemsArray,
         items: goodItemsObjectArray,
-            // deals: goodItemsArrayWithPercentages,
         opPointsTotal: curOPPoints
     });
     // debugLog(goodItemsArray);
@@ -230,5 +219,3 @@ if (document.URL != DEALS_PAGE_URL && document.URL.indexOf(SEARCH_PAGE_STRING) >
         command: "otherPageLoaded"
     });
 }
-
-// function item()

@@ -52,8 +52,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, messageSent) {
                     var item = tabToItemsMap[message.tabID][i];
                     if (!ignoredItemIDs[item.itemID]) {
                         debugLog("removing: " + item.div);
-                        // shownItemIDs[item.itemID] = false;
-                        // item.div.remove();
                         removeItem(item.itemID);
                     }
                 }
@@ -70,11 +68,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, messageSent) {
             }
             if (oldItemsArray && oldItemsArray.length > 0) {
                 for (var i = 0; i < oldItemsArray.length; i++) {
-                    // itemBoxParent.removeChild(oldItemsArray[i]);
                     var item = oldItemsArray[i];
-                    // item.div.remove();
-                    // item.div.parentNode.removeChild(item.div);
-                    // shownItemIDs[item.itemID] = false;
                     removeItem(item.itemID);
                 }
             }
@@ -85,7 +79,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, messageSent) {
                 var item = message.items[i];
                 if (!ignoredItemIDs[item.itemID] && !shownItemIDs[item.itemID]) { // Check if item has been ignored or already shown
                     item.div = document.createElement("div");
-                    // item.div = newDiv;
                     item.div.parentNode = itemBoxParent;
                     item.div.innerHTML = item.html;
                     item.div.innerHTML = item.div.innerHTML.replace("col-md-4", "col-md-2");
@@ -97,9 +90,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, messageSent) {
                         ignoreItem(this.id);
                     });
                     item.div.firstChild.firstChild.firstChild.appendChild(newImg);
-                    // newDiv.innerHTML = newDiv.innerHTML.replace("% lower!!</a>", "% lower!!</a>" + '</a><img src="' + xIconURL + '" href=# id="' + item.itemID + '" onClick="ignoreItem(this.id)"/>')
-                    // newDiv.innerHTML = newDiv.innerHTML.replace("% lower!!</a>", "% lower!!</a>" + newImg.outerHTML);
-                    // itemBoxParent.appendChild(newDiv);
                     itemsToStore.push(item);
                     if (!(item.itemID in idToItemMap)) {
                         gotNewItem = true;
@@ -115,11 +105,9 @@ chrome.runtime.onMessage.addListener(function(message, sender, messageSent) {
             allItemsToSort = new Array();
 
             for (var i = 0; i < tabList.length; i++) {
-                // debugLog("first loop");
                 var items = tabToItemsMap[tabList[i]];
                 if (items && items.length > 0) {
                     for (var j = 0; j < items.length; j++) {
-                        // debugLog("second loop");
                         allItemsToSort.push(items[j]);
                     }
                 }
@@ -170,12 +158,6 @@ function playSound() {
     myAudio.src = soundclipURL;
     myAudio.play();
 }
-
-// function Comparator(a, b) {
-//     if (a[0] < b[0]) return -1;
-//     if (a[0] > b[0]) return 1;
-//     return 0;
-// }
 
 function percentComparator(a, b) {
     if (a.percent < b.percent) return -1;
