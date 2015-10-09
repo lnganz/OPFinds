@@ -1,10 +1,10 @@
 var debugging = false;
 
 var xIconURL = chrome.extension.getURL('assets/icon_x.png'),
-    soundclipURL = chrome.extension.getURL('assets/deal.mp3');
-var DEALS_PAGE_URL = "https://opskins.com/index.php?loc=shop_search&search_item=*factory*+*new*&min=1&max=&StatTrak=1&inline=&grade=&inline=&type=k&inline=&sort=n";
-var isDealsPage = (document.URL == DEALS_PAGE_URL);
-var itemBoxParent = null,
+    soundclipURL = chrome.extension.getURL('assets/deal.mp3'),
+    DEALS_PAGE_URL = "https://opskins.com/index.php?loc=shop_search&search_item=*factory*+*new*&min=1&max=&StatTrak=1&inline=&grade=&inline=&type=k&inline=&sort=n",
+    isDealsPage = (document.URL == DEALS_PAGE_URL),
+    itemBoxParent = null,
     items = null,
     itemsToStore = new Array(),
     tabToItemsMap = {},
